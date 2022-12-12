@@ -3,46 +3,45 @@
 require_once "../controladores/dashboard.controlador.php";
 require_once "../modelos/dashboard.modelo.php";
 
-class AjaxDashboard{
+class AjaxDashboard
+{
 
-    public function getDatosDashboard(){
+    public function getDatosDashboard()
+    {
 
         $datos = DashboardControlador::ctrGetDatosDashboard();
         echo json_encode($datos);
-
     }
 
-    public function getVentasMesActual(){
+    public function getVentasMesActual()
+    {
         $ventasMesActual = DashboardControlador::ctrGetVentasMesActual();
-        echo json_encode($ventasMesActual); 
+        echo json_encode($ventasMesActual);
     }
 
-    public function getProductosMasVendidos(){
+    public function getProductosMasVendidos()
+    {
         $productosMasVendidos = DashboardControlador::ctrProductosMasVendidos();
-        echo json_encode($productosMasVendidos); 
+        echo json_encode($productosMasVendidos);
     }
-    
-    public function getProductosPocoStock(){
+
+    public function getProductosPocoStock()
+    {
         $productosPocoStock = DashboardControlador::ctrProductosPocoStock();
-        echo json_encode($productosPocoStock); 
+        echo json_encode($productosPocoStock);
     }
-
 }
 
-if(isset($_POST["accion"]) && $_POST["accion"] == 1){
+if (isset($_POST["accion"]) && $_POST["accion"] == 1) {
     $ventasMesActual = new AjaxDashboard();
-    $ventasMesActual -> getVentasMesActual();
-}elseif(isset($_POST["accion"]) && $_POST["accion"] == 2){
+    $ventasMesActual->getVentasMesActual();
+} elseif (isset($_POST["accion"]) && $_POST["accion"] == 2) {
     $productosMasVendidos = new AjaxDashboard();
-    $productosMasVendidos -> getProductosMasVendidos();
-}elseif(isset($_POST["accion"]) && $_POST["accion"] == 3){
+    $productosMasVendidos->getProductosMasVendidos();
+} elseif (isset($_POST["accion"]) && $_POST["accion"] == 3) {
     $productosPocoStock = new AjaxDashboard();
-    $productosPocoStock -> getProductosPocoStock();
-}else{
+    $productosPocoStock->getProductosPocoStock();
+} else {
     $datos = new AjaxDashboard();
-    $datos -> getDatosDashboard();
+    $datos->getDatosDashboard();
 }
-
-
-
-?>

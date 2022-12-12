@@ -1,0 +1,4 @@
+table.dataTable tbody td{
+    display: grid;
+    grid-template-columns: repeat(5, min-max(200px, 1fr));
+}

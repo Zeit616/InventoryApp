@@ -1,4 +1,32 @@
 DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `prc_ListarProductosMasVendidos`()
+BEGIN
+
+SELECT p.codigo_producto,
+
+		p.descripcion_producto,
+       sum(vd.cantidad) as cantidad,
+       sum(round(vd.total_venta,2)) as total_venta
+from venta_detalle vd inner join productos p on vd.codigo_producto = p.codigo_producto
+GROUP by p.codigo_producto,
+		p.descripcion_producto
+            
+order by sum(Round(vd.total_venta,2)) DESC
+LIMIT 10;
+
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `prc_ListarProductosPocoStock`()
+BEGIN
+
+SELECT p.codigo_producto, p.descripcion_producto, p.stock_producto, p.minimo_stock_producto from productos p WHERE p.stock_producto <= p.minimo_stock_producto ORDER BY p.stock_producto asc;
+
+END$$
+DELIMITER ;
+
+DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `prc_ObtenerDatosDashboard`()
 BEGIN
 declare totalProductos int;
@@ -36,29 +64,31 @@ END$$
 DELIMITER ;
 
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `prc_ListarProductosMasVendidos`()
+CREATE DEFINER=`root`@`localhost` PROCEDURE `prc_ListarProductos`()
 BEGIN
 
-SELECT p.codigo_producto,
+SELECT '' AS detalles,
+          p.id,
+          p.codigo_producto,
+          c.id_categoria,
+          c.nombre_categoria,
+         p.descripcion_producto,
 
-		p.descripcion_producto,
-       sum(vd.cantidad) as cantidad,
-       sum(round(vd.total_venta,2)) as total_venta
-from venta_detalle vd inner join productos p on vd.codigo_producto = p.codigo_producto
-GROUP by p.codigo_producto,
-		p.descripcion_producto
+          ROUND(p.precio_compra_producto,2) AS precio_compra,
+          ROUND(p.precio_venta_producto,2) AS precio_venta,
+          ROUND(p.utilidad,2) AS utilidad,
+
+ CASE WHEN c.aplica_peso = 1 THEN concat(p.stock_producto, 'Kg(s)') ELSE concat(p.stock_producto, 'Und(s)') END AS stok,
+ 
+ CASE WHEN c.aplica_peso = 1 THEN concat(p.minimo_stock_producto, 'Kg(s)') ELSE concat(p.minimo_stock_producto, 'Und(s)') END AS minimo_stock,
+                                       
+ CASE WHEN c.aplica_peso = 1 THEN concat(p.ventas_producto, 'Kg(s)') ELSE concat(p.ventas_producto, 'Und(s)') END AS ventas,
+
+p.fecha_creacion_producto,
+p.fecha_actualizacion_producto,
+'' AS opciones
+                                       
             
-order by sum(Round(vd.total_venta,2)) DESC
-LIMIT 10;
-
-END$$
-DELIMITER ;
-
-DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `prc_ListarProductosPocoStock`()
-BEGIN
-
-SELECT p.codigo_producto, p.descripcion_producto, p.stock_producto, p.minimo_stock_producto from productos p WHERE p.stock_producto <= p.minimo_stock_producto ORDER BY p.stock_producto asc;
-
+FROM productos p INNER JOIN categorias c ON p.id_categoria_producto = c.id_categoria;
 END$$
 DELIMITER ;
