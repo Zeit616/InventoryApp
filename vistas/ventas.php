@@ -367,6 +367,7 @@
           source: items,
           select: function(event, ui) {
 
+            
             CargarProductos(ui.item.value);
 
             $("#iptCodigoVenta").val("");
@@ -484,7 +485,7 @@
 
       Swal.fire({
         title: "",
-        text: "Peso del Producto (Grms):",
+        text: "Peso del Producto (Kgs):",
         input: 'text',
         width: 300,
         confirmButtonText: 'Aceptar',
@@ -822,7 +823,7 @@
                 "<i class='fas fa-trash fs-5'> </i> " +
                 "</span>" +
                 "<div class='btn-group'>" +
-                "<button type='button' class=' p-0 btn btn-primary transparentbar dropdown-toggle btn-sm' data-bs-toggle='dropdown' aria-expanded='false'>" +
+                "<button type='button' class=' p-0 btn btn-primary transparenciapa transparentbar dropdown-toggle btn-sm' data-bs-toggle='dropdown' aria-expanded='false'>" +
                 "<i class='fas fa-cog text-primary fs-5'></i> <i class='fas fa-chevron-down text-primary'></i>" +
                 "</button>" +
 
@@ -862,7 +863,7 @@
                 "<i class='fas fa-trash fs-5'> </i> " +
                 "</span>" +
                 "<div class='btn-group'>" +
-                "<button type='button' class=' p-0 btn btn-primary transparentbar dropdown-toggle btn-sm' data-bs-toggle='dropdown' aria-expanded='false'>" +
+                "<button type='button' class=' p-0 btn btn-primary transparenciapa transparentbar dropdown-toggle btn-sm' data-bs-toggle='dropdown' aria-expanded='false'>" +
                 "<i class='fas fa-cog text-primary fs-5'></i> <i class='fas fa-chevron-down text-primary'></i>" +
                 "</button>" +
 

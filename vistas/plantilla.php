@@ -52,46 +52,77 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="assets/dist/css/plantilla2.css">
   <!--ESTILOS FORZADOS-->
   <style>
-    .navbar-light .navbar-nav .active>.nav-link,
-    .navbar-light .navbar-nav .nav-link.active,
-    .navbar-light .navbar-nav .nav-link.show,
-    .navbar-light .navbar-nav .show>.nav-link {
-      color: white !important;
-      background: #007bff !important;
-      font-weight: bold !important;
-    }
+    .navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+    color: white !important;
+    background: #007bff !important;
+    font-weight: bold !important;
+}
 
-    table.dataTable tbody td {
-      white-space: nowrap !important;
-      font-size: 13px !important;
-    }
+table.dataTable tbody td {
+    white-space: nowrap !important;
+    font-size: 15px !important;
+}
 
-    #tbl_productos thead th {
-      white-space: nowrap !important;
-    }
+#tbl_productos thead th{
+    white-space: nowrap !important;
+}
 
-    .addNewRecord {
-      background-color: #198754 !important;
-      color: white !important;
-    }
+.addNewRecord{
+    background-color: #198754 !important;
+    color: white !important;
+}
 
-    .buttons-excel {
-      background-color: #0d6efd !important;
-      color: white !important;
-    }
+.buttons-excel{
+    background-color: #0d6efd !important;
+    color: white !important;
+}
 
-    .buttons-print {
-      background-color: #ffc107 !important;
-      color: white !important;
-    }
+.buttons-print{
+    background-color: #ffc107 !important;
+    color: white !important;
+}
 
-    .dt-button {
-      padding-top: 5px !important;
-      padding-bottom: 5px !important;
-    }
+.dt-button{
+    padding-top: 5px  !important;
+    padding-bottom: 5px !important;
+}
+
+#tbl_productos tbody tr td{
+    padding: 3px !important;
+}
+
+.transparentbar {
+    background-repeat:no-repeat;
+    cursor:pointer;
+    outline:none;
+    border:none;
+    box-shadow:none; 
+    background-image: none;  
+    background-color: transparent;
+  
+  }
+  
+  .btn-check:focus+.btn-primary, .btn-primary:focus {
+    color: #fff;
+    background-color: transparent !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+  
+  .transparentbar:hover {
+    color: #fff;
+    background-color: transparent !important;
+    border-color: transparent !important;
+  }
+
+.transparenciapa {
+    color: #fff;
+    background-color: transparent !important;
+    border-color: transparent !important;
+    box-shadow: none;
+}
   </style>
   <!--FIN ESTILOS FORZADOS-->
-</head>
 
 <!-- Google Font: Source Sans Pro -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -104,13 +135,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- SweetAlert2 -->
 <script src="vistas/assets/plugins/sweetalert2/sweetalert2.min.js"></script>
 
-<!-- JQUERY UI -->
-<script src="vistas/assets/plugins/jquery-ui/js/jquery-ui.js"></script>
+
 
 <!-- JS Bootstrap 5 -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 <!-- jQuery -->
 <script src="vistas/assets/plugins/jquery/jquery.min.js"></script>
+<!-- jquery UI -->
+<script src="vistas/assets/plugins/jquery-ui/js/jquery-ui.js"></script>
 <!-- ============================================================
     =LIBRERIAS PARA USO DE DATATABLES JS
     ===============================================================-->
